@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Form</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -2;
+      pointer-events: none;
+      border: none;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 30px;
+      margin: auto;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      text-align: center;
+    }
+
+    .logo-container img {
+      max-width: 100px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #fafbfbcc;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #7cbdbe;
+    }
+   
+  </style>
+</head>
+<body>
+
+  <video class="background-video" autoplay loop muted playsinline>
+    <source src="Tinago Falls Drone Dive.mp4" type="video/mp4" />
+  </video>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <div class="logo-container">
+      <img src="c:\Users\mike7\Downloads\city_seal-removebg-preview.png" alt="Iigan Logo" />
+    </div>
+    <form id="login">
+      <div class="form-group">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" name="password" required />
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script>
+    const correctEmail = "admin@gmail.com";
+    const correctPassword = "1234";
+
+    const emailInput = document.getElementById("loginEmail");
+    const passwordInput = document.getElementById("loginPassword");
+    const form = document.getElementById("login");
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      if (
+        emailInput.value === correctEmail &&
+        passwordInput.value === correctPassword
+      ) {
+        emailInput.setCustomValidity("");
+        passwordInput.setCustomValidity("");
+        alert("Login successful!");
+        window.location.href = "file:///C:/Users/mike7/OneDrive/Documents/28.html";
+      } else {
+        emailInput.setCustomValidity("Invalid email.");
+        passwordInput.setCustomValidity("Invalid password.");
+        emailInput.reportValidity();
+        passwordInput.reportValidity();
+      }
+    });
+
+    emailInput.addEventListener("input", () => {
+      emailInput.setCustomValidity("");
+    });
+
+    passwordInput.addEventListener("input", () => {
+      passwordInput.setCustomValidity("");
+    });
+  </script>
+
+</body>
+</html>
+

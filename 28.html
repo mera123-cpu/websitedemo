@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iligan City - City of Majestic Waterfalls 🌊</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* ========= RESET & BASE ========= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary: #00a8e8;
+      --secondary: #0077b6;
+      --accent: #ff9e00;
+      --light: #f8f9fa;
+      --dark: #1d3557;
+      --text: #2b2d42;
+      --success: #4cc9f0;
+      --warning: #f8961e;
+      --gradient-blue: linear-gradient(135deg, #00a8e8 0%, #0077b6 100%);
+      --gradient-orange: linear-gradient(135deg, #ff9e00 0%, #ff7b00 100%);
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e6f7ff 0%, #f0f9ff 100%);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    
+    /* ========= NAVIGATION ========= */
+    nav {
+      position: fixed;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1200px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 120, 200, 0.15);
+      border: 1px solid rgba(0, 168, 232, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2rem;
+      z-index: 1000;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    }
+    
+    nav:hover {
+      box-shadow: 0 15px 40px rgba(0, 120, 200, 0.25);
+      transform: translateX(-50%) translateY(-3px);
+    }
+    
+    nav .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--gradient-blue);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      cursor: default;
+      transition: all 0.3s ease;
+    }
+    
+    nav .logo i {
+      font-size: 1.5rem;
+      background: var(--gradient-orange);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      background: white;
+      color: var(--secondary);
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0, 120, 200, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+      border: 1px solid rgba(0, 168, 232, 0.1);
+    }
+    
+    nav ul li a:hover {
+      background: var(--gradient-blue);
+      color: white;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 120, 200, 0.3);
+    }
+    
+    /* ========= PAGE LAYOUT ========= */
+    .page {
+      display: none;
+      padding: 6rem 2rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      animation: fadeIn 0.8s ease forwards;
+    }
+    
+    .page.active {
+      display: block;
+    }
+    
+    .section {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 168, 232, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 120, 200, 0.15);
+    }
+    
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--gradient-blue);
+    }
+    
+    /* ========= HOME PAGE ========= */
+    #home .hero {
+      text-align: center;
+      padding: 3rem 0;
+    }
+    
+    #home h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-blue);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.2;
+    }
+    
+    #home p.subtitle {
+      font-size: 1.3rem;
+      color: var(--text);
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+    
+    .video-container {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      margin: 2rem auto;
+      max-width: 800px;
+      border: 5px solid white;
+    }
+    
+    .video-container video {
+      width: 100%;
+      display: block;
+    }
+    
+    .fun-fact-btn {
+      background: var(--gradient-orange);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(255, 158, 0, 0.3);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .fun-fact-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(255, 158, 0, 0.4);
+    }
+    
+    #funFact {
+      background: rgba(0, 168, 232, 0.1);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-top: 2rem;
+      border-left: 4px solid var(--primary);
+      font-size: 1.1rem;
+      color: var(--dark);
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    /* ========= INFO PAGE ========= */
+    #info h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    #info h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: var(--gradient-orange);
+      border-radius: 2px;
+    }
+    
+    #info p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    
+    blockquote {
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--secondary);
+      border-left: 4px solid var(--accent);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      position: relative;
+    }
+    
+    blockquote::before {
+      content: '"';
+      font-size: 4rem;
+      position: absolute;
+      left: -10px;
+      top: -20px;
+      color: rgba(0, 168, 232, 0.1);
+      z-index: -1;
+    }
+    
+    #readAloudBtn {
+      background: var(--gradient-blue);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.8rem;
+      font-size: 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(0, 120, 200, 0.3);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    #readAloudBtn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 120, 200, 0.4);
+    }
+    
+    /* ========= MAP PAGE ========= */
+    .map-container {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      margin: 2rem 0;
+      border: 5px solid white;
+      position: relative;
+    }
+    
+    .map-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 168, 232, 0.1) 0%, rgba(0, 119, 182, 0.1) 100%);
+      pointer-events: none;
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      display: block;
+    }
+    
+    /* ========= EVENTS PAGE ========= */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .event-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .event-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 120, 200, 0.2);
+    }
+    
+    .event-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .event-card:hover img {
+      transform: scale(1.1);
+    }
+    
+    .event-info {
+      padding: 1.5rem;
+    }
+    
+    .event-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+    
+    .event-info p {
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    
+    .event-date {
+      display: inline-block;
+      background: var(--gradient-orange);
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    
+    /* ========= COUNCIL PAGE ========= */
+    .council-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .council-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .council-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 120, 200, 0.2);
+    }
+    
+    .council-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-bottom: 3px solid var(--primary);
+    }
+    
+    .council-details {
+      padding: 1.5rem;
+    }
+    
+    .council-details h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
+      color: var(--dark);
+    }
+    
+    .council-details p.position {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .council-details p.description {
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+    
+    .council-link {
+      display: inline-block;
+      margin-top: 2rem;
+      background: var(--gradient-blue);
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(0, 120, 200, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .council-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 120, 200, 0.4);
+    }
+    
+   .modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 2000;
+  overflow-y: hidden; /* allows scrolling if content exceeds */
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 720px;
+  max-height: 90vh; /* LIMIT HEIGHT */
+  margin: 5% auto;
+  padding: 2rem;
+  overflow-y: hidden; /* enables vertical scroll inside content */
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: slideUp 0.4s ease;
+}
+
+.modal-content img {
+  max-width: 100%;
+  width: 250px; /* or 200px, depende sa gusto nimo */
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem auto; /* center the image and add spacing below */
+  border-radius: 15px; /* optional: para aesthetic */
+}
+
+    
+    /* ========= LOGOUT BUTTON ========= */
+    #logoutBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--gradient-orange);
+      color: white;
+      border: none;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 30px  #4cc9f0(255, 158, 0, 0.4);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    #logoutBtn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(255, 158, 0, 0.5);
+    }
+    
+    /* ========= ANIMATIONS ========= */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    /* ========= RESPONSIVE ========= */
+    @media (max-width: 768px) {
+      nav {
+        padding: 0.8rem 1rem;
+      }
+      
+      nav .logo {
+        font-size: 1.5rem;
+      }
+      
+      nav ul {
+        gap: 0.5rem;
+      }
+      
+      nav ul li a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+      
+      #home h1 {
+        font-size: 2.5rem;
+      }
+      
+      .page {
+        padding: 5rem 1rem 1rem;
+      }
+      
+      .section {
+        padding: 1.5rem;
+      }
+      
+      .map-container iframe {
+        height: 300px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      nav {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      #home h1 {
+        font-size: 2rem;
+      }
+      
+      .council-grid, .events-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+   /* Add these new styles for the discover section */
+    .discover-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+      max-height: 70vh;
+      overflow-y: auto;
+      padding: 1rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) rgba(0, 0, 0, 0.1);
+      align-items: stretch;
+    }
+
+    .discover-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .discover-container::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .discover-container::-webkit-scrollbar-thumb {
+      background-color: var(--primary);
+      border-radius: 10px;
+    }
+/* Container for the waterfalls */
+.discover-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 20px;
+}
+
+/* Aesthetic styling for each waterfall box */
+.waterfall-box-aesthetic {
+  background: #fef9f4; /* very light warm cream */
+  border-radius: 20px;
+  box-shadow: 0 8px 15px rgba(255, 168, 120, 0.3);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover effect: slight scale and glow */
+.waterfall-box-aesthetic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(255, 168, 120, 0.6);
+}
+
+/* Waterfall images */
+.waterfall-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  transition: filter 0.3s ease;
+}
+
+/* Slight darkening on hover */
+.waterfall-box-aesthetic:hover .waterfall-img {
+  filter: brightness(0.9);
+}
+
+/* Info container with rounded corners and padding */
+.waterfall-info {
+  padding: 16px 18px 20px 18px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: #fff8f0;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Waterfall name styling */
+.waterfall-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color:  black ; /* warm burnt orange */
+  margin-bottom: 6px;
+  border-bottom: 2px solid #ffaf66;
+  padding-bottom: 4px;
+}
+
+/* Waterfall description styling */
+.waterfall-desc {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.9rem;
+  color:  black; /* muted dark brown */
+  line-height: 1.3;
+}
+
+/* Smooth fade-in animation (optional) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply fade-in animation */
+.waterfall-box-aesthetic {
+  animation: fadeInUp 0.8s ease forwards;
+}
+.seal-logo {
+  width: 40px; /* Previously 40px */
+  height: 40px; /* Previously 40px */
+  margin-right: 0.5rem;
+}
+</style>
+</head>
+<body>
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+  <div class="logo">
+    <img src="logo-iligan.png" alt="Iligan City Seal" class="seal-logo">
+    <span>Iligan City</span>
+  </div>
+    <ul>
+      <li><a href="#home" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#info" class="nav-link"><i class="fas fa-info-circle"></i> Info</a></li>
+      <li><a href="#map" class="nav-link"><i class="fas fa-map-marked-alt"></i> Map</a></li>
+      <li><a href="#events" class="nav-link"><i class="fas fa-calendar-alt"></i> Events</a></li>
+      <li><a href="#discover" class="nav-link"><i class="fas fa-users"></i> Discover</a></li>
+      <li><a href="#council" class="nav-link"><i class="fas fa-users"></i> Council</a></li>
+    </ul>
+  </nav>
+
+  <div class="pages">
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+      <section class="hero">
+        <h1>Discover Iligan City<br>City of Majestic Waterfalls</h1>
+        <p class="subtitle">Explore breathtaking waterfalls, rich culture, and warm hospitality in the heart of Mindanao</p>
+        
+        <div class="video-container">
+          <video autoplay loop muted controls>
+            <source src="iligan.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        
+        <button class="fun-fact-btn" onclick="showFunFact()">
+          <i class="fas fa-lightbulb"></i> Did You Know?
+        </button>
+        <div id="funFact"></div>
+      </section>
+    </div>
+
+    <!-- INFO PAGE -->
+    <div id="info" class="page">
+      <section>
+        <h2>About Iligan City</h2>
+        <p>
+          Iligan, officially the City of Iligan, is a 1st class highly urbanized city in Northern Mindanao, Philippines. 
+          Known as the "City of Majestic Waterfalls," it boasts 23 stunning waterfalls, with Maria Cristina Falls being the most famous.
+        </p>
+        <p>
+          The city is also an industrial hub, earning the nickname "Industrial City of the South." Beyond its industrial might, 
+          Iligan offers rich cultural heritage, delicious cuisine, and breathtaking natural landscapes.
+        </p>
+        
+        <blockquote>
+          "The waterfalls of Iligan are nature's poetry — ever-flowing, ever-beautiful." 
+          <span style="display: block; text-align: right; margin-top: 0.5rem;">— Local Guide</span>
+        </blockquote>
+        
+        <button id="readAloudBtn">
+          <i class="fas fa-volume-up"></i> Read Aloud
+        </button>
+      </section>
+    </div>
+
+    <!-- MAP PAGE -->
+    <div id="map" class="page">
+      <section>
+        <h2>Explore Iligan City</h2>
+        <p>Find your way around the City of Majestic Waterfalls with our interactive map.</p>
+        
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126144.19523822456!2d124.17309376125766!3d8.240731579599612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x325571185dff67b3%3A0xdec0c1d54803b945!2sIligan%20City!5e0!3m2!1sen!2sph!4v1688527164539!5m2!1sen!2sph"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </section>
+    </div>
+
+    <!-- EVENTS PAGE -->
+    <div id="events" class="page">
+      <section>
+        <h2>Festivals & Events</h2>
+        <p>Experience the vibrant culture of Iligan through these exciting annual events.</p>
+        
+        <div class="events-grid">
+          <div class="event-card" onclick="openModal('diyandiModal')">
+            <img src="Diyandi-Festival.jpg" alt="Diyandi Festival">
+            <div class="event-info">
+              <h3>Diyandi Festival</h3>
+              <p>Celebrating Iligan's founding anniversary with street dancing and cultural shows.</p>
+              <span class="event-date"><i class="fas fa-calendar-day"></i> September 29</span>
+            </div>
+          </div>
+          
+          <div class="event-card" onclick="openModal('hugyawModal')">
+            <img src="hugyaw ilaw.jpg" alt="Hugyaw sa Iligan">
+            <div class="event-info">
+              <h3>Hugyaw sa Iligan</h3>
+              <p>A spectacular festival of lights celebrating Christmas season in Iligan.</p>
+              <span class="event-date"><i class="fas fa-calendar-day"></i> December</span>
+            </div>
+          </div>
+          
+          <div class="event-card" onclick="openModal('kawayanModal')">
+            <img src="kawayanan.jpg" alt="Kawayan Festival">
+            <div class="event-info">
+              <h3>Kawayan Festival</h3>
+              <p>Showcasing the bamboo industry and crafts of Iligan City.</p>
+              <span class="event-date"><i class="fas fa-calendar-day"></i> October</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- COUNCIL PAGE -->
+    <div id="council" class="page">
+      <section>
+        <h2>City Council</h2>
+        <p>Meet the leaders who guide Iligan City towards progress and development.</p>
+        
+        <div class="council-grid">
+          <div class="council-card">
+            <img src="mayor.jpg" alt="Mayor of Iligan">
+            <div class="council-details">
+              <h3>Hon. Frederick Siao</h3>
+              <p class="position">City Mayor</p>
+              <p class="description">Leading Iligan City with vision and dedication since 2019.</p>
+            </div>
+          </div>
+          
+          <div class="council-card">
+            <img src="vice.jpg" alt="Vice Mayor of Iligan">
+            <div class="council-details">
+              <h3>Hon. Jemar Vera Cruz</h3>
+              <p class="position">Vice Mayor</p>
+              <p class="description">Supporting the city's legislative agenda and programs.</p>
+            </div>
+          </div>
+          
+          <div class="council-card">
+            <img src="councilors.jpg" alt="City Council Session">
+            <div class="council-details">
+              <h3>City Councilors</h3>
+              <p class="position">Sangguniang Panlungsod</p>
+              <p class="description">The legislative body of Iligan City with 12 council members.</p>
+            </div>
+          </div>
+        </div>
+        
+        <a href="https://www.iligan.gov.ph/city-council" target="_blank" class="council-link">
+          <i class="fas fa-external-link-alt"></i> Visit Official Website
+        </a>
+      </section>
+    </div>
+ </div>
+
+
+
+  <!-- MODALS -->
+  <div id="diyandiModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('diyandiModal')">&times;</span>
+      <img src="diyandi-festival.jpg" alt="Diyandi Festival" class="modal-img">
+      <h2>Diyandi Festival</h2>
+      <p>The Diyandi Festival is Iligan City's founding anniversary celebration held every September 29. The name "Diyandi" comes from the Cebuano word meaning "to celebrate" or "merry-making."</p>
+      <p>Highlights include:</p>
+      <ul style="margin: 1rem 0 1rem 2rem;">
+        <li>Street dancing competition featuring colorful costumes</li>
+        <li>Cultural shows and performances</li>
+        <li>Trade fairs and food festivals</li>
+        <li>Fireworks display</li>
+      </ul>
+      <p>The festival showcases Iligan's rich cultural heritage and the unity of its diverse communities.</p>
+    </div>
+  </div>
+
+  <div id="hugyawModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('hugyawModal')">&times;</span>
+      <img src="hugyaw ilaw.jpg" alt="Hugyaw sa Iligan" class="modal-img">
+      <h2>Hugyaw sa Iligan</h2>
+      <p>Hugyaw sa Iligan is the city's annual Christmas festival known for its spectacular display of lights and festive celebrations. "Hugyaw" means jubilation in Cebuano.</p>
+      <p>Festival features:</p>
+      <ul style="margin: 1rem 0 1rem 2rem;">
+        <li>Giant Christmas tree lighting ceremony</li>
+        <li>Parade of lights and lanterns</li>
+        <li>Christmas village with food stalls</li>
+        <li>Cultural performances and concerts</li>
+      </ul>
+      <p>The event transforms Iligan into a magical wonderland during the holiday season.</p>
+    </div>
+  </div>
+
+  <div id="kawayanModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('kawayanModal')">&times;</span>
+      <img src="kawayanan.jpg" alt="Kawayan Festival" class="modal-img">
+      <h2>Kawayan Festival</h2>
+      <p>The Kawayan (Bamboo) Festival celebrates Iligan's bamboo industry and promotes environmental conservation. Held every October, it highlights the versatility of bamboo.</p>
+      <p>Festival activities include:</p>
+      <ul style="margin: 1rem 0 1rem 2rem;">
+        <li>Bamboo craft exhibits and workshops</li>
+        <li>Bamboo cooking demonstrations</li>
+        <li>Bamboo planting activities</li>
+        <li>Cultural shows featuring bamboo instruments</li>
+      </ul>
+      <p>The festival promotes sustainable use of bamboo as an eco-friendly resource.</p>
+    </div>
+  </div>
+   <div id="discover" class="page">
+  <section>
+    <h1>Discover Iligan City's 23 Waterfalls</h1>
+    <p>Explore the majestic waterfalls that give Iligan its nickname as the "City of Waterfalls"</p>
+
+    <div class="discover-container">
+      <!-- Waterfall 1 -->
+      <div class="waterfall-box">
+        <img src="maria christina.avif" alt="Maria Cristina Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Maria Cristina Falls</h3>
+          <p class="waterfall-desc">The most famous waterfall in Iligan, powering hydroelectric plants with its 98-meter drop.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 2 -->
+      <div class="waterfall-box">
+        <img src="tinago.jpg" alt="Tinago Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Tinago Falls</h3>
+          <p class="waterfall-desc">Hidden gem accessible by 500 steps, featuring a deep blue lagoon at its base.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 3 -->
+      <div class="waterfall-box">
+        <img src="Mimbalot Falls.jpg" alt="Mimbalot Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Mimbalot Falls</h3>
+          <p class="waterfall-desc">A serene three-tiered waterfall surrounded by lush greenery.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 4 -->
+      <div class="waterfall-box">
+        <img src="abaga.jpeg" alt="Abaga Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Abaga Falls</h3>
+          <p class="waterfall-desc">Known for its wide curtain-like cascade and refreshing natural pool.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 5 -->
+      <div class="waterfall-box">
+        <img src="dodiongan-falls.jpg" alt="Dodiongan Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Dodiongan Falls</h3>
+          <p class="waterfall-desc">A 20-meter high waterfall with a strong water flow, perfect for adventure seekers.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 6 -->
+      <div class="waterfall-box">
+        <img src="limunsudan.jpg" alt="Limunsudan Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Limunsudan Falls</h3>
+          <p class="waterfall-desc">The highest waterfall in the Philippines with a two-tiered drop totaling 265 meters.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 7 -->
+      <div class="waterfall-box">
+        <img src="guimbolan.png" alt="Guimbalawan Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Guimbalawan Falls</h3>
+          <p class="waterfall-desc">A hidden waterfall with crystal-clear waters and a peaceful atmosphere.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 8 -->
+      <div class="waterfall-box">
+        <img src="kalubihon-falls1.webp" alt="Kalubihon Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Kalubihon Falls</h3>
+          <p class="waterfall-desc">Features multiple cascades and is surrounded by rich biodiversity.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 13 -->
+      <div class="waterfall-box">
+        <img src="lumbatin.jpg" alt="Lumbatin Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Lumbatan Falls</h3>
+          <p class="waterfall-desc">A gentle waterfall surrounded by native flora and fauna.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 14 -->
+      <div class="waterfall-box">
+        <img src="dalipuga.jpg" alt="Dalipuga Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Dalipuga Falls</h3>
+          <p class="waterfall-desc">A scenic waterfall located near an old Spanish-era settlement.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 15 -->
+      <div class="waterfall-box">
+        <img src="langilanon.webp" alt="Langilanon Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Langilanon Falls</h3>
+          <p class="waterfall-desc">A small but charming waterfall set in a lush green environment.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 16 -->
+      <div class="waterfall-box">
+        <img src="hindang-falls.webp" alt="Hindang Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Hindang Falls</h3>
+          <p class="waterfall-desc">A popular spot for locals with refreshing waters perfect for swimming.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 17 -->
+      <div class="waterfall-box">
+        <img src="pampam-falls1.webp" alt="Pampam Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Pampam Falls</h3>
+          <p class="waterfall-desc">Known for its beautiful cascading waters and easy access trail.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 18 -->
+      <div class="waterfall-box">
+        <img src="languyon-falls.webp" alt="Languyon Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Languyon Falls</h3>
+          <p class="waterfall-desc">Picturesque cascades surrounded by dense forest vegetation.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 19 -->
+      <div class="waterfall-box">
+        <img src="linanot-falls.webp" alt="Linanot Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Linanot Falls</h3>
+          <p class="waterfall-desc">A hidden waterfall with crystal-clear pools and rich biodiversity.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 20 -->
+      <div class="waterfall-box">
+        <img src="malinao-falls.webp" alt="Malinao Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Malinao Falls</h3>
+          <p class="waterfall-desc">Scenic and peaceful, perfect for relaxation and nature photography.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 21 -->
+      <div class="waterfall-box">
+        <img src="malaigang.webp" alt="Malaigang Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Malaigang Falls</h3>
+          <p class="waterfall-desc">A quiet waterfall with soothing sounds and pristine water pools.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 22 -->
+      <div class="waterfall-box">
+        <img src="limunsudan.jpg" alt="limunsudan Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Limunsudan Falls</h3>
+          <p class="waterfall-desc">Known for its wide cascade and accessibility for all ages.</p>
+        </div>
+      </div>
+
+      <!-- Waterfall 23 -->
+      <div class="waterfall-box">
+        <img src="bridal-veil-falls-with-rainbow.webp" alt="bridal Veil Falls" class="waterfall-img">
+        <div class="waterfall-info">
+          <h3 class="waterfall-name">Bridal Veil Falls</h3>
+          <p class="waterfall-desc">A beautiful waterfall with a calm pool ideal for swimming and picnics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+  <!-- LOGOUT BUTTON -->
+  <button id="logoutBtn" onclick="logout()">
+    <i class="fas fa-sign-out-alt"></i> Logout
+  </button>
+
+  <script>
+    // Navigation
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        document.querySelectorAll('.page').forEach(page => {
+          page.classList.remove('active');
+        });
+        document.getElementById(targetId).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Fun Fact Generator
+    function showFunFact() {
+      const facts = [
+        "Iligan has 23 waterfalls, earning it the nickname 'City of Majestic Waterfalls'.",
+        "Maria Cristina Falls powers 70% of Mindanao's electricity through hydroelectric plants.",
+        "Tinago Falls is hidden 500 steps down a ravine but worth the climb!",
+        "Iligan was originally named 'Iligan' from the Higaonon word 'iligan' meaning 'fortress'.",
+        "The city hosts the only steel mill in Mindanao - the National Steel Corporation.",
+        "Iligan's Del Carmen Church is one of the oldest in Mindanao, built in 1624.",
+        "The city celebrates the Kawayan Festival showcasing bamboo products each October."
+      ];
+      
+      const randomFact = facts[Math.floor(Math.random() * facts.length)];
+      const funFactEl = document.getElementById('funFact');
+      
+      funFactEl.textContent = randomFact;
+      funFactEl.style.display = 'block';
+      
+      // Confetti effect
+      createConfetti();
+    }
+
+    // Confetti effect
+    function createConfetti() {
+      const colors = ['#00a8e8', '#0077b6', '#ff9e00', '#ff7b00', '#4cc9f0'];
+      
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'fixed';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.top = '-20px';
+        confetti.style.borderRadius = '50%';
+        confetti.style.zIndex = '9999';
+        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+        confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+        
+        document.body.appendChild(confetti);
+        
+        // Remove confetti after animation
+        setTimeout(() => {
+          confetti.remove();
+        }, 5000);
+      }
+      
+      // Add animation to styles
+      const style = document.createElement('style');
+      style.innerHTML = `
+        @keyframes fall {
+          to {
+            transform: translateY(${window.innerHeight + 100}px) rotate(360deg);
+            opacity: 0;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    // Read Aloud
+    document.getElementById('readAloudBtn').addEventListener('click', () => {
+      const aboutText = document.querySelector('#info p').textContent + " " + 
+                       document.querySelector('#info blockquote').textContent;
+      
+      if ('speechSynthesis' in window) {
+        const speech = new SpeechSynthesisUtterance();
+        speech.text = aboutText;
+        speech.lang = 'en-US';
+        speech.rate = 0.9;
+        
+        // Stop any current speech
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(speech);
+        
+        // Change button icon while speaking
+        const button = document.getElementById('readAloudBtn');
+        button.innerHTML = '<i class="fas fa-stop"></i> Stop';
+        
+        speech.onend = () => {
+          button.innerHTML = '<i class="fas fa-volume-up"></i> Read Aloud';
+        };
+      } else {
+        alert('Text-to-speech is not supported in your browser.');
+      }
+    });
+
+    // Modal functions
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      if (event.target.className === 'modal') {
+        event.target.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    }
+     // Add this to your existing JavaScript to handle waterfall box clicks
+    document.querySelectorAll('.waterfall-box').forEach(box => {
+      box.addEventListener('click', function() {
+        const waterfallName = this.querySelector('.waterfall-name').textContent;
+        alert(`You selected ${waterfallName}. More details would be shown in a real implementation.`);
+        // In a real app, you might open a modal or navigate to a details page
+      });
+    });
+    // Logout function
+    function logout() {
+      if (confirm('Are you sure you want to logout?')) {
+        alert('You have been logged out. Thank you for visiting Iligan City!');
+      window.location.href = 'file:///C:/Users/mike7/OneDrive/Documents/0.html';
+      }
+    }
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', () => {
+      // Add any initialization code here
+    });
+  </script>
+</body>
+</html>
